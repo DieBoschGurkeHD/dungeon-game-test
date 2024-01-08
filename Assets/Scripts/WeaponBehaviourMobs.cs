@@ -111,7 +111,6 @@ public class WeaponBehaviourMobs : MonoBehaviour
 	foreach(Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position,radius)){
 		//Debug.Log(collider.name);
 		HPManager health;
-		Debug.Log("HP3");
 		if(health = collider.GetComponent<HPManager>()){
 			health.GetHit(1,transform.parent.gameObject);
 }

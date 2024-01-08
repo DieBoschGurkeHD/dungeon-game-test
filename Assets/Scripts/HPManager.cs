@@ -12,31 +12,38 @@ public class HPManager : MonoBehaviour
 
     [SerializeField]
     private bool isDead = false;
+	public SpriteRenderer spriteRenderer;
 
     public void InitializeHP(int hpValue){
 	currentHP = hpValue;
 	maxHP = hpValue;
 	isDead = false;
+	spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 }
     public void GetHit(int amount, GameObject sender){
-	Debug.Log("IN HP CLASS");
+	
+	
 	if(isDead){
-		Debug.Log("HP0");
 		return;
 	}
 	if(sender.layer == gameObject.layer){
-		Debug.Log("HP1");
 		return;
 	}
 
 	currentHP -= amount;
-	Debug.Log("HP2");
 	if(currentHP > 0){
 		OnHitWithReference?.Invoke(sender);
+		StartCoroutine("ColorHit");
 	}else{
 		OnDeathWithReference?.Invoke(sender);
 		isDead = true;
 		Destroy(gameObject);
 	}
     }
+	IEnumerator ColorHit()
+	{
+		spriteRenderer.color = Color.red;
+		yield return new WaitForSeconds(0.2f);
+		spriteRenderer.color = Color.white;
+	}
 }

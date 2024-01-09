@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class HPManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class HPManager : MonoBehaviour
     public int currentHP, maxHP;
 
     public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;
+
+	public GameObject dmgPopUpPrefab;
 
     [SerializeField]
     private bool isDead = false;
@@ -39,6 +42,8 @@ public class HPManager : MonoBehaviour
 		OnHitWithReference?.Invoke(sender);
 		StartCoroutine("ColorHit");
 		KnockBack(sender, strength);
+		GameObject DmgPopUpInstance = Instantiate(dmgPopUpPrefab, gameObject.transform);
+		DmgPopUpInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(amount.ToString());
 	//dies to damage
 	}else{
 		OnDeathWithReference?.Invoke(sender);

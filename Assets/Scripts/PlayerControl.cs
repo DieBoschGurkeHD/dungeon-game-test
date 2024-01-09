@@ -9,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     private BoxCollider2D boxCollider;
     private RaycastHit2D hit;
     public WeaponBehaviour weaponBehaviour;
+	public SpriteRenderer spriteRenderer;
     private string facing_dir;
     private GameObject playerObj = null;
 
@@ -38,11 +39,13 @@ public class PlayerControl : MonoBehaviour
 
 	//turns sprite to mouse
 	if(rotation_z>-90 && rotation_z<0 || rotation_z>0 && rotation_z<90){
-		transform.localScale = Vector3.one;
-		facing_dir = "right";
-	}else if(rotation_z>90 && rotation_z<180 || rotation_z>-180 && rotation_z<-90){
-		transform.localScale = new Vector3(-1,1,1);
+		spriteRenderer.flipX = false;
+		//transform.localScale = Vector3.one;
 		facing_dir = "left";
+	}else if(rotation_z>90 && rotation_z<180 || rotation_z>-180 && rotation_z<-90){
+		//transform.localScale = new Vector3(-1,1,1);
+		spriteRenderer.flipX = true;
+		facing_dir = "right";
 	}
 
 	//checking for collision in y direction

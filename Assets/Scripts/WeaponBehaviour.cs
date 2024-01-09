@@ -41,7 +41,7 @@ public class WeaponBehaviour : MonoBehaviour
 	if(attackOnCooldown)
 		return;
 	//starts attack animation + cooldown
-	animator.SetTrigger("AttackLeft"); //weirder bug mit der weapon rotation, player flippt bei richtungswechsel weapon mit, bei mob aber nicht - deswegen 2x attackleft als temp fix, idk anders funzt einfach nicht (TODO)
+	animator.SetTrigger("AttackRight");
 	attackOnCooldown = true;
 	StartCoroutine(DelayAttack());
 }

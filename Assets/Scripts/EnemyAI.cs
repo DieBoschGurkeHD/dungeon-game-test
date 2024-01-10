@@ -64,10 +64,10 @@ public class EnemyAI : MonoBehaviour
 
 	//turns mob sprite to player direction - TODO: maybe wegen der solution issue mit flip bei weapon? siehe solution player
 	if(distance_hor>0){
-		spriteRenderer.flipX = true;
+		spriteRenderer.flipX = false;
 		facing_dir = "right";
 	}else if(distance_hor<0){
-		spriteRenderer.flipX = false;
+		spriteRenderer.flipX = true;
 		facing_dir = "left";
 	}
 

@@ -12,9 +12,12 @@ public class HPManager : MonoBehaviour
     public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;
 
 	public GameObject dmgPopUpPrefab;
+	public GameObject coinDropPrefab;
 
     [SerializeField]
     private bool isDead = false;
+
+	public bool hasDrops = false;
 	public SpriteRenderer spriteRenderer;
 
     public void InitializeHP(int hpValue){
@@ -42,10 +45,15 @@ public class HPManager : MonoBehaviour
 		OnHitWithReference?.Invoke(sender);
 		StartCoroutine("ColorHit");
 		KnockBack(sender, strength);
+		//shows dmg dealt as pop-up
 		GameObject DmgPopUpInstance = Instantiate(dmgPopUpPrefab, gameObject.transform);
 		DmgPopUpInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(amount.ToString());
 	//dies to damage
 	}else{
+		//checks for coin drops
+		if(hasDrops){
+		GameObject CoinInstance = Instantiate(coinDropPrefab,gameObject.transform.position, gameObject.transform.rotation);
+	}
 		OnDeathWithReference?.Invoke(sender);
 		isDead = true;
 		Destroy(gameObject);
@@ -65,4 +73,6 @@ public class HPManager : MonoBehaviour
 		direction = direction * strength;
 		gameObject.transform.Translate(direction.x * Time.deltaTime, direction.y * Time.deltaTime, 0);
 		return;
-}}
+}
+}
+

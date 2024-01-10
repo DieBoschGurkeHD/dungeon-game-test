@@ -16,7 +16,7 @@ TagManager:
   - Blocking
   - Characters
   - Foreground
-  - 
+  - GUI
   - 
   - 
   - 
@@ -49,4 +49,7 @@ TagManager:
     locked: 0
   - name: Characters
     uniqueID: 1333997247
+    locked: 0
+  - name: GUI
+    uniqueID: 624101755
     locked: 0

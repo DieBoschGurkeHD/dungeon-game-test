@@ -8,13 +8,23 @@ public class PlayerControl : MonoBehaviour
     private Vector2 moveDelta;
     private BoxCollider2D boxCollider;
     private RaycastHit2D hit;
+	private RaycastHit2D pickup_coin;
     public WeaponBehaviour weaponBehaviour;
 	public SpriteRenderer spriteRenderer;
+
+	[SerializeField] public ParticleSystem explosion;
     private string facing_dir;
+
+	private GameObject coinObj = null;
+	private GameObject bombObj = null;
     private GameObject playerObj = null;
+	public int coin_counter;
+	public int bomb_counter;
 
     private float player_pos_x;
     private float player_pos_y;
+
+	public GameObject bombDropPrefab;
 
     private void Start()
     {
@@ -28,6 +38,10 @@ public class PlayerControl : MonoBehaviour
 	//gets player keyboard input
 	float x = Input.GetAxisRaw("Horizontal");
 	float y = Input.GetAxisRaw("Vertical");
+
+	if(Input.GetKeyDown("space")){
+		PlaceBomb();
+	}
 
 	//player move new position
 	moveDelta = new Vector3(x,y,0);
@@ -55,6 +69,7 @@ public class PlayerControl : MonoBehaviour
 	{
 	transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
 	}
+	//if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Coins"));
 	//checking for collision in x direction
 	hit = Physics2D.BoxCast(transform.position,boxCollider.size,0,new Vector2(moveDelta.x,0),Mathf.Abs(moveDelta.x*Time.deltaTime),LayerMask.GetMask("Characters","Blocking"));
 	//no collision
@@ -62,7 +77,6 @@ public class PlayerControl : MonoBehaviour
 	{
 	transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
 	}
-	
 	//checks for player attack while facing left
 	if(Input.GetMouseButtonDown(0) && facing_dir == "left"){
 		weaponBehaviour.AttackLeft();
@@ -77,4 +91,28 @@ public class PlayerControl : MonoBehaviour
 	player_pos_x = playerObj.transform.position.x;
 	player_pos_y = playerObj.transform.position.y;
     }
+
+	public void PlaceBomb(){
+		if(bomb_counter<=0){
+			return;
+		}
+		bomb_counter -= 1;
+		GameObject BombInstance = Instantiate(bombDropPrefab,gameObject.transform.position, gameObject.transform.rotation);
+	}
+
+	void OnCollisionStay2D(Collision2D col){
+		//checks for collisions with coins
+		if(col.gameObject.tag == "coin"){
+			coinObj = GameObject.Find("coin_0(Clone)");
+			coin_counter =+ 1;
+			Destroy(coinObj);
+		}
+		//checks for collisions with bombs
+		if(col.gameObject.tag == "bomb"){
+			bombObj = GameObject.Find("bomb_pickup_0(Clone)");
+			bomb_counter =+ 1;
+			Destroy(bombObj);
+		}
+	}
 }
+

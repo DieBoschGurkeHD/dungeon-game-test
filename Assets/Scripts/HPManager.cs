@@ -15,7 +15,9 @@ public class HPManager : MonoBehaviour
 	public GameObject coinDropPrefab;
 
     [SerializeField]
-    private bool isDead = false;
+    public bool isDead = false;
+
+	public bool isBomb = false;
 
 	public bool hasDrops = false;
 	public SpriteRenderer spriteRenderer;
@@ -25,6 +27,7 @@ public class HPManager : MonoBehaviour
 	currentHP = hpValue;
 	maxHP = hpValue;
 	isDead = false;
+	isBomb = false;
 	spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 }
     public void GetHit(int amount, GameObject sender, float strength){
@@ -70,7 +73,11 @@ public class HPManager : MonoBehaviour
 	public void KnockBack(GameObject sender, float strength){
 		//apply knockback 
 		Vector3 direction = gameObject.transform.position - sender.transform.position;
-		direction = direction * strength;
+		if(!isBomb){
+		direction = direction * strength;	
+		}else{
+			direction = direction * strength * 5;
+		}
 		gameObject.transform.Translate(direction.x * Time.deltaTime, direction.y * Time.deltaTime, 0);
 		return;
 }

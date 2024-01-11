@@ -62,7 +62,7 @@ public class EnemyAI : MonoBehaviour
 	//initialized spriteRenderer
 	spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-	//turns mob sprite to player direction - TODO: maybe wegen der solution issue mit flip bei weapon? siehe solution player
+	//turns mob sprite to player direction 
 	if(distance_hor>0){
 		spriteRenderer.flipX = false;
 		facing_dir = "right";

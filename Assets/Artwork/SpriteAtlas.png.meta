@@ -1257,28 +1257,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crate_1
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 144
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2991df37085dd23449285bc0db64ef01
-      internalID: -823217597
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: crate_2
+      name: double_crate_0
       rect:
         serializedVersion: 2
         x: 96
@@ -1294,27 +1273,6 @@ TextureImporter:
       bones: []
       spriteID: c5f3dfc6cfaa17941bd4af9d535820ab
       internalID: 256172696
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: crate_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 144
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4bbbb562328053f42a4e76f07e9ee8e0
-      internalID: 376731202
       vertices: []
       indices: 
       edges: []
@@ -1517,7 +1475,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1538,7 +1496,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1546,6 +1504,48 @@ TextureImporter:
       bones: []
       spriteID: 6b40fd83d4c16204a9d5934b7154faad
       internalID: -1153691650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crate_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2239afa933caec4f95da6ff94da01dc
+      internalID: -823217597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: double_crate_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd25db729fafca498b896c483da9d62
+      internalID: -1998880992
       vertices: []
       indices: 
       edges: []
@@ -1569,7 +1569,6 @@ TextureImporter:
       collision_0: 1042299453
       crate_0: 722701512
       crate_1: -823217597
-      crate_2: 256172696
       crate_3: 376731202
       door_0: 213234534
       door_1: -893056277
@@ -1579,6 +1578,8 @@ TextureImporter:
       door_wall_1: -143400840
       door_wall_top_0: -1897555987
       door_wall_top_1: -174299908
+      double_crate_0: 256172696
+      double_crate_1: -1998880992
       floor_0: 406921336
       floor_1: 1517144030
       floor_10: -1073426019

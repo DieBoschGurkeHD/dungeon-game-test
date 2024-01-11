@@ -14,44 +14,41 @@ public class HealthBarManager : MonoBehaviour
     public SpriteRenderer spriteRenderer_2;
     public SpriteRenderer spriteRenderer_3;
     public SpriteRenderer spriteRenderer_4;
-
+    Dictionary <int, SpriteRenderer> heartRenderer = new Dictionary<int, SpriteRenderer>();
     public Sprite heart_full;
-    public Sprite hearth_half;
-    public Sprite hearth_empty;
+    public Sprite heart_half;
+    public Sprite heart_empty;
+
+    void Start()
+    {
+        heartRenderer.Add(0, spriteRenderer_0);
+        heartRenderer.Add(1, spriteRenderer_1);
+        heartRenderer.Add(2, spriteRenderer_2);
+        heartRenderer.Add(3, spriteRenderer_3);
+        heartRenderer.Add(4, spriteRenderer_4);
+    }
 
     void Update()
     {
         currentHP = hPManager.currentHP;
-        Debug.Log("currentHP: " + currentHP);
-        if(currentHP<10){
-            spriteRenderer_4.sprite = hearth_half;
-        }
-        if(currentHP<9){
-            spriteRenderer_4.sprite = hearth_empty;
-        }
-        if(currentHP<8){
-            spriteRenderer_3.sprite = hearth_half;
-        }
-        if(currentHP<7){
-            spriteRenderer_3.sprite = hearth_empty;
-        }
-        if(currentHP<6){
-            spriteRenderer_2.sprite = hearth_half;
-        }
-        if(currentHP<5){
-            spriteRenderer_2.sprite = hearth_empty;
-        }
-        if(currentHP<4){
-            spriteRenderer_1.sprite = hearth_half;
-        }
-        if(currentHP<3){
-            spriteRenderer_1.sprite = hearth_empty;
-        }
-        if(currentHP<2){
-            spriteRenderer_0.sprite = hearth_half;
-        }
-        if(currentHP<1){
-            spriteRenderer_0.sprite = hearth_empty;
+        for(int i = 0; i<5; i++)
+        {
+            if((i+1)*2 >= currentHP){
+                switch(currentHP %2){
+                    case 0:
+                        heartRenderer[i].sprite = heart_full;  
+                    break;
+                    case 1:
+                        heartRenderer[i].sprite = heart_half;  
+                    break;              
+                }
+                if(currentHP == 0){
+                        heartRenderer[i].sprite = heart_empty;
+                }
+                currentHP = 0;}
+            else{
+                heartRenderer[i].sprite = heart_full; 
+            } 
         }
     }
 }

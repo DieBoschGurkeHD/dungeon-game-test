@@ -1228,6 +1228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfDrops: 2
   coinDropPrefab: {fileID: 7403977798344954176, guid: 59bd2a4485708b44db09d463cc70b137, type: 3}
+  bombDropPrefab: {fileID: 6984936223852419784, guid: fb47d6dea066eb44387fd5bfcdcbcafb, type: 3}
+  healDropPrefab: {fileID: 2107545276759908097, guid: 15b153fd9701bf74298d724f68275e53, type: 3}
 --- !u!212 &288773219
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8158,6 +8160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfDrops: 1
   coinDropPrefab: {fileID: 7403977798344954176, guid: 59bd2a4485708b44db09d463cc70b137, type: 3}
+  bombDropPrefab: {fileID: 6984936223852419784, guid: fb47d6dea066eb44387fd5bfcdcbcafb, type: 3}
+  healDropPrefab: {fileID: 2107545276759908097, guid: 15b153fd9701bf74298d724f68275e53, type: 3}
 --- !u!1 &1809859042
 GameObject:
   m_ObjectHideFlags: 0
@@ -8194,6 +8198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponBehaviour: {fileID: 218345589}
   spriteRenderer: {fileID: 1809859044}
+  hPManager: {fileID: 1809859050}
   explosion: {fileID: 0}
   coin_counter: 0
   bomb_counter: 0

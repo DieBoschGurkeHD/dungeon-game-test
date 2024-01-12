@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour
 	private RaycastHit2D pickup_coin;
     public WeaponBehaviour weaponBehaviour;
 	public SpriteRenderer spriteRenderer;
+	public HPManager hPManager;
 
 	[SerializeField] public ParticleSystem explosion;
     private string facing_dir;
@@ -18,6 +19,8 @@ public class PlayerControl : MonoBehaviour
 	private GameObject coinObj = null;
 	private GameObject bombObj = null;
     private GameObject playerObj = null;
+
+	private GameObject healObj = null;
 	public int coin_counter;
 	public int bomb_counter;
 
@@ -104,14 +107,20 @@ public class PlayerControl : MonoBehaviour
 		//checks for collisions with coins
 		if(col.gameObject.tag == "coin"){
 			coinObj = GameObject.Find("coin_0(Clone)");
-			coin_counter =+ 1;
+			coin_counter += 1;
 			Destroy(coinObj);
 		}
 		//checks for collisions with bombs
 		if(col.gameObject.tag == "bomb"){
 			bombObj = GameObject.Find("bomb_pickup_0(Clone)");
-			bomb_counter =+ 1;
+			bomb_counter += 1;
 			Destroy(bombObj);
+		}
+		if(col.gameObject.tag == "heal"){
+			healObj = GameObject.Find("heal_0(Clone)");
+			int new_currentHP = hPManager.currentHP + 2;
+			hPManager.setNewCurrentHP(new_currentHP);
+			Destroy(healObj);
 		}
 	}
 }

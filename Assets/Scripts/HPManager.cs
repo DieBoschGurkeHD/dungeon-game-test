@@ -80,6 +80,9 @@ public class HPManager : MonoBehaviour
 		}
 		gameObject.transform.Translate(direction.x * Time.deltaTime, direction.y * Time.deltaTime, 0);
 		return;
-}
+	}
+	public void setNewCurrentHP(int new_currentHP){
+		currentHP = new_currentHP;
+	}
 }
 

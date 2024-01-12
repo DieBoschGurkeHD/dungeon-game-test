@@ -7,6 +7,7 @@ TagManager:
   - coin
   - bomb
   - heal
+  - door
   layers:
   - Default
   - TransparentFX

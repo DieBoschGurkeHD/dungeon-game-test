@@ -29,6 +29,8 @@ public class PlayerControl : MonoBehaviour
 
 	public GameObject bombDropPrefab;
 
+	public CameraMover cameraMover;
+
     private void Start()
     {
     	//initializes collision
@@ -121,6 +123,14 @@ public class PlayerControl : MonoBehaviour
 			int new_currentHP = hPManager.currentHP + 2;
 			hPManager.setNewCurrentHP(new_currentHP);
 			Destroy(healObj);
+		}
+		if(col.gameObject.tag == "door"){
+			if(cameraMover.transform.position.y < player_pos_y){
+				cameraMover.MoveCameraUp();
+			}
+			if(cameraMover.transform.position.y > player_pos_y){
+				cameraMover.MoveCameraDown();
+			}
 		}
 	}
 }

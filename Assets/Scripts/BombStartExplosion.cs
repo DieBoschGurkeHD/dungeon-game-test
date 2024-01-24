@@ -33,6 +33,7 @@ public void DetectColliders(){
 	foreach(Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position,radius)){
 		HPManager health;
         CrateManager crate;
+		TorchManager torch;
 		//if they have an HPManager run hit script
 		if(health = collider.GetComponent<HPManager>()){
 			health.GetHit(5,gameObject, weapon_strength);
@@ -40,6 +41,9 @@ public void DetectColliders(){
         if(crate = collider.GetComponentInParent<CrateManager>()){
             crate.getDestroyed();
         }
+		if(torch = collider.GetComponentInParent<TorchManager>()){
+			torch.unlightTorch();
+		}
 }
 }
 }

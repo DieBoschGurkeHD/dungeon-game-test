@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class CoinManager : MonoBehaviour
+public class CoinBarManager : MonoBehaviour
 {
     public PlayerControl playerControl;
     private int coin_counter;

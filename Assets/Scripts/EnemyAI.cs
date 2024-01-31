@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour
     public float range = 0.4f;
     public WeaponBehaviourMobs weaponBehaviourMobs;
 
-	private bool in_cam = true;
+	private bool in_cam = false;
 
     private GameObject playerObj = null;
     private GameObject mobObj = null;
@@ -31,11 +31,18 @@ public class EnemyAI : MonoBehaviour
 	if(in_cam){
 		//gets current location of player
 		playerObj = GameObject.Find("player_0");
+
+		//ends script if player is dead
+		if(playerObj == null){
+			gameObject.SetActive(false);
+			return;
+		}
 		player_pos_x = playerObj.transform.position.x;
 		player_pos_y = playerObj.transform.position.y;
 	
 		//gets current location of mob
-		mobObj = GameObject.Find("mob_0");
+		//mobObj = GameObject.Find("mob_0");
+		mobObj = gameObject;
 		mob_pos_x = mobObj.transform.position.x;
 		mob_pos_y = mobObj.transform.position.y;
 	
@@ -93,5 +100,5 @@ public class EnemyAI : MonoBehaviour
 	}
 	public void OnBecameInvisible(){
 		in_cam = false;
-	}
+	}	
 }

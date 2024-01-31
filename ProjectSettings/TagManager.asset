@@ -10,6 +10,8 @@ TagManager:
   - door
   - weapon_sword
   - weapon_hammer
+  - skin_dino_t
+  - skin_knight_o
   layers:
   - Default
   - TransparentFX

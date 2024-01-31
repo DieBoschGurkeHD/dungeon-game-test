@@ -13,16 +13,15 @@ public class PlayerControl : MonoBehaviour
 	public SpriteRenderer spriteRenderer;
 	public HPManager hPManager;
 
-    public GameObject weapon_sword_1Prefab;
-
-	public GameObject weapon_hammer_0Prefab;
-
 	[SerializeField] public ParticleSystem explosion;
     private string facing_dir;
 
 	private bool weapon_swap_cd = false; 
+	private bool skin_swap_cd = false;
 
-	private float weapon_swap_cd_time = 1.0f;
+	private float weapon_swap_cd_time = 0.25f;
+
+	private float skin_swap_cd_time = 0.25f;
 
 	private GameObject coinObj = null;
 	private GameObject bombObj = null;
@@ -147,9 +146,8 @@ public class PlayerControl : MonoBehaviour
 			weapon_swap_cd = true;
 			weaponBehaviour.radius = 0.17f;
 			weaponBehaviour.weapon_strength = 17;
-			//GameObject WeaponSwordInstance = Instantiate(weapon_sword_1Prefab,gameObject.transform.GetChild(0).gameObject.transform.position, Quaternion.identity);
-			//Destroy(gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject);
-			//WeaponSwordInstance.transform.parent = gameObject.transform.GetChild(0).transform;
+			Animator animator = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Animator>();
+			animator.runtimeAnimatorController = Resources.Load("Animations/AnimationStates/WeaponSwordAnimator") as RuntimeAnimatorController;
 			StartCoroutine(DelayNewWeapon());
 		}
 		//checks for collisions with weapon_swap hammer
@@ -158,12 +156,24 @@ public class PlayerControl : MonoBehaviour
 			weaponBehaviour.radius = 0.20f;
 			weaponBehaviour.weapon_strength = 20;
 			Animator animator = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Animator>();
-			animator.runtimeAnimatorController = Resources.Load("C:\\Unity-Proj\\dungeon-game-test\\Assets\\Animations\\AnimationStates\\WeaponSwordAnimator") as RuntimeAnimatorController;
-			//GameObject WeaponHammerInstance = Instantiate(weapon_hammer_0Prefab,gameObject.transform.GetChild(0).gameObject.transform.position, Quaternion.identity); 
-			//Destroy(gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject);
-			//WeaponHammerInstance.transform.parent = gameObject.transform.GetChild(0).transform;
+			animator.runtimeAnimatorController = Resources.Load("Animations/AnimationStates/WeaponAnimation") as RuntimeAnimatorController;
 			StartCoroutine(DelayNewWeapon());
 		}
+		//checks for collisions with skin_swap dino_teal
+		if(col.gameObject.tag == "skin_dino_t" && skin_swap_cd == false){
+			skin_swap_cd = true;
+			Animator animator = gameObject.GetComponent<Animator>();
+			animator.runtimeAnimatorController = Resources.Load("Animations/AnimationStates/skin_dino_t") as RuntimeAnimatorController;
+			StartCoroutine(DelayNewSkin());
+		}
+		//checks for collisions with skin_swap knight_orange
+		if(col.gameObject.tag == "skin_knight_o" && skin_swap_cd == false){
+			skin_swap_cd = true;
+			Animator animator = gameObject.GetComponent<Animator>();
+			animator.runtimeAnimatorController = Resources.Load("Animations/AnimationStates/player_0") as RuntimeAnimatorController; //TODO animation renamen
+			StartCoroutine(DelayNewSkin());
+		}
+
 	}
 	private IEnumerator DelayNewWeapon()
     	{	
@@ -171,5 +181,11 @@ public class PlayerControl : MonoBehaviour
 		yield return new WaitForSeconds(weapon_swap_cd_time);
 		weapon_swap_cd = false;
 		}
+	private IEnumerator DelayNewSkin()
+    	{	
+		//stops skin pickup for skin_swap_cd_time duration
+		yield return new WaitForSeconds(skin_swap_cd_time);
+		skin_swap_cd = false;
+		}	
 }
 

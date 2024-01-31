@@ -126,9 +126,9 @@ TextureImporter:
       name: masked_mob_idle_0
       rect:
         serializedVersion: 2
-        x: 370
+        x: 369
         y: 336
-        width: 15
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -551,7 +551,7 @@ TextureImporter:
         width: 16
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -559,6 +559,174 @@ TextureImporter:
       bones: []
       spriteID: a2d5c45133a51b4448d45d760bd95c0e
       internalID: 368494133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dino_t_idle_0
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 288
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c4a9bf296c5f3544aa2179319796e5b
+      internalID: 1401372908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dino_t_idle_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 288
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0797887b7c50aa94fabad6103d4c648f
+      internalID: 73030407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dino_t_idle_2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 288
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e12047784c3854188f4ad0582d2296
+      internalID: -1836033129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_dino_t_idle_3
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 288
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc45f7c842f876e41815b6e2de15503c
+      internalID: 723253416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_orc_idle_0
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 312
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2855c166c4857d144bd270888d45680a
+      internalID: -966436678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_orc_idle_1
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 312
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1f3b23c1dd585b4799fde08dc519ee9
+      internalID: 968333563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_orc_idle_2
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 312
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01463fd2f5adbb7429cb80ac25265315
+      internalID: -1647256881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_orc_idle_3
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 312
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f28da97f9550d9c489d3c7eb4a056621
+      internalID: -830044602
       vertices: []
       indices: 
       edges: []
@@ -590,12 +758,20 @@ TextureImporter:
       masked_mob_idle_1: 966186213
       masked_mob_idle_2: -1985870991
       masked_mob_idle_3: 1068745297
+      player_dino_t_idle_0: 1401372908
+      player_dino_t_idle_1: 73030407
+      player_dino_t_idle_2: -1836033129
+      player_dino_t_idle_3: 723253416
       player_knight_o_idle_0: -1588644516
       player_knight_o_idle_1: 680245882
       player_knight_o_idle_2: 1052540233
       player_knight_o_idle_3: -287486903
       potion_0: 1248636503
       skull_1: -896328433
+      small_orc_idle_0: -966436678
+      small_orc_idle_1: 968333563
+      small_orc_idle_2: -1647256881
+      small_orc_idle_3: -830044602
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,8 +13,16 @@ public class PlayerControl : MonoBehaviour
 	public SpriteRenderer spriteRenderer;
 	public HPManager hPManager;
 
+    public GameObject weapon_sword_1Prefab;
+
+	public GameObject weapon_hammer_0Prefab;
+
 	[SerializeField] public ParticleSystem explosion;
     private string facing_dir;
+
+	private bool weapon_swap_cd = false; 
+
+	private float weapon_swap_cd_time = 1.0f;
 
 	private GameObject coinObj = null;
 	private GameObject bombObj = null;
@@ -117,6 +125,7 @@ public class PlayerControl : MonoBehaviour
 			bombObj = GameObject.Find("bomb_pickup_0(Clone)");
 			bomb_counter += 1;
 			Destroy(bombObj);
+		//checks for collision with healing
 		}
 		if(col.gameObject.tag == "heal"){
 			healObj = GameObject.Find("heal_0(Clone)");
@@ -124,6 +133,7 @@ public class PlayerControl : MonoBehaviour
 			hPManager.setNewCurrentHP(new_currentHP);
 			Destroy(healObj);
 		}
+		//checks for collision with doors
 		if(col.gameObject.tag == "door"){
 			if(cameraMover.transform.position.y < player_pos_y){
 				cameraMover.MoveCameraUp();
@@ -132,6 +142,34 @@ public class PlayerControl : MonoBehaviour
 				cameraMover.MoveCameraDown();
 			}
 		}
+		//checks for collisions with weapon_swap sword
+		if(col.gameObject.tag == "weapon_sword" && weapon_swap_cd == false){
+			weapon_swap_cd = true;
+			weaponBehaviour.radius = 0.17f;
+			weaponBehaviour.weapon_strength = 17;
+			//GameObject WeaponSwordInstance = Instantiate(weapon_sword_1Prefab,gameObject.transform.GetChild(0).gameObject.transform.position, Quaternion.identity);
+			//Destroy(gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject);
+			//WeaponSwordInstance.transform.parent = gameObject.transform.GetChild(0).transform;
+			StartCoroutine(DelayNewWeapon());
+		}
+		//checks for collisions with weapon_swap hammer
+		if(col.gameObject.tag == "weapon_hammer" && weapon_swap_cd == false){
+			weapon_swap_cd = true;
+			weaponBehaviour.radius = 0.20f;
+			weaponBehaviour.weapon_strength = 20;
+			Animator animator = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Animator>();
+			animator.runtimeAnimatorController = Resources.Load("C:\\Unity-Proj\\dungeon-game-test\\Assets\\Animations\\AnimationStates\\WeaponSwordAnimator") as RuntimeAnimatorController;
+			//GameObject WeaponHammerInstance = Instantiate(weapon_hammer_0Prefab,gameObject.transform.GetChild(0).gameObject.transform.position, Quaternion.identity); 
+			//Destroy(gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject);
+			//WeaponHammerInstance.transform.parent = gameObject.transform.GetChild(0).transform;
+			StartCoroutine(DelayNewWeapon());
+		}
 	}
+	private IEnumerator DelayNewWeapon()
+    	{	
+		//stops weapon pickup for weapon_swap_cd_time duration
+		yield return new WaitForSeconds(weapon_swap_cd_time);
+		weapon_swap_cd = false;
+		}
 }
 

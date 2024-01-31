@@ -1538,7 +1538,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1546,6 +1546,27 @@ TextureImporter:
       bones: []
       spriteID: 3cd25db729fafca498b896c483da9d62
       internalID: -1998880992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sword_1
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 225
+        width: 16
+        height: 27
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16801566}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d94139bcd298d947abb572f8e760d5d
+      internalID: -951193590
       vertices: []
       indices: 
       edges: []
@@ -1600,6 +1621,7 @@ TextureImporter:
       player_0: 903487283
       skull_0: 389630164
       sword_0: -179404884
+      sword_1: -951193590
       tile_0: -311611293
       torch_0: 1867134298
       torch_1: 649435871

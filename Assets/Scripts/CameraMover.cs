@@ -13,7 +13,7 @@ public class CameraMover : MonoBehaviour
     private float move_in_y = 2.55f;
 
     private int current_floor = 1; 
-    private int current_room = 1;
+    private int current_room = 0;
 
     private void Start(){
         gameObject.transform.GetChild(0).GetComponent<TextMeshPro>().SetText("Floor 0 - Room " + current_room);

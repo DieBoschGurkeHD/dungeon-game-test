@@ -530,7 +530,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -538,6 +538,27 @@ TextureImporter:
       bones: []
       spriteID: 8b57188903acbfe40b48fa0bfc3f7030
       internalID: 1248636503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: get_weapon_pillar_0
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 419
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2d5c45133a51b4448d45d760bd95c0e
+      internalID: 368494133
       vertices: []
       indices: 
       edges: []
@@ -560,6 +581,7 @@ TextureImporter:
       coin_1: -206405627
       coin_2: -563452984
       coin_3: -1050989419
+      get_weapon_pillar_0: 368494133
       hammer_0_new: 763626260
       heart_empty: 1298225431
       heart_full: 1593652502

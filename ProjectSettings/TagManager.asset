@@ -8,6 +8,8 @@ TagManager:
   - bomb
   - heal
   - door
+  - weapon_sword
+  - weapon_hammer
   layers:
   - Default
   - TransparentFX

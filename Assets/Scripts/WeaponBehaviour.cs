@@ -6,14 +6,17 @@ public class WeaponBehaviour : MonoBehaviour
 {    
     public Vector2 Pointerposition { get; set; }
 
-    public Animator animator;
+    private Animator animator;
     public float hit_delay = 0.3f;
     private bool attackOnCooldown;
     public Transform circleOrigin;
     public float radius;
 	public int weapon_strength = 20;
+	private SpriteRenderer spriteRenderer;
 
     void Update(){
+		animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
+		circleOrigin = gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Transform>();
 		//gets angle to x axis from 0,0 to current mouse location
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         difference.Normalize();
@@ -22,10 +25,20 @@ public class WeaponBehaviour : MonoBehaviour
 		//rotates weapon sprite based on mouse location
         transform.rotation = Quaternion.Euler(0f, 0f, rotation_z+90);
 	
-	//flips weapon sprite - keine Ahnung mehr warum tbh, maybe nicht necessary (TODO)
-	Vector2 scale = transform.localScale;
-	scale.y = -1;
-    transform.localScale = scale;
+		//flips weapon sprite - keine Ahnung mehr warum tbh, maybe nicht necessary (TODO)
+		//flips sprite in y dir
+		Vector2 scale = transform.localScale;
+		scale.y = -1;
+    	transform.localScale = scale;
+
+		spriteRenderer = gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
+		//spriteRenderer.flipY = true;
+		if(rotation_z < 90 && rotation_z > 0 || rotation_z < 0 && rotation_z > -90){
+			spriteRenderer.flipX = true;
+		}else{
+			spriteRenderer.flipX = false;
+		}
+		
     }
     public void AttackLeft(){
 	//check for attack cd

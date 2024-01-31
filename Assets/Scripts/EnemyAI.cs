@@ -20,64 +20,78 @@ public class EnemyAI : MonoBehaviour
     public float range = 0.4f;
     public WeaponBehaviourMobs weaponBehaviourMobs;
 
+	private bool in_cam = true;
+
     private GameObject playerObj = null;
     private GameObject mobObj = null;
     public float speed = 0.002f;
 
     private void Update(){
 
-	//gets current location of player
-	playerObj = GameObject.Find("player_0");
-	player_pos_x = playerObj.transform.position.x;
-	player_pos_y = playerObj.transform.position.y;
+	if(in_cam){
+		//gets current location of player
+		playerObj = GameObject.Find("player_0");
+		player_pos_x = playerObj.transform.position.x;
+		player_pos_y = playerObj.transform.position.y;
 	
-	//gets current location of mob
-	mobObj = GameObject.Find("mob_0");
-	mob_pos_x = mobObj.transform.position.x;
-	mob_pos_y = mobObj.transform.position.y;
+		//gets current location of mob
+		mobObj = GameObject.Find("mob_0");
+		mob_pos_x = mobObj.transform.position.x;
+		mob_pos_y = mobObj.transform.position.y;
 	
-	//calculates x and y distance between player and mob
-	distance_hor = player_pos_x - mob_pos_x;
-	distance_ver = player_pos_y - mob_pos_y;
+		//calculates x and y distance between player and mob
+		distance_hor = player_pos_x - mob_pos_x;
+		distance_ver = player_pos_y - mob_pos_y;
 
-	//calculates ratio of distance in x and y
-	summe_distance = System.Math.Abs(distance_hor) + System.Math.Abs(distance_ver);
-	distance_verhaeltnis_x = System.Math.Abs(distance_hor)/summe_distance;
-	distance_verhaeltnis_y = System.Math.Abs(distance_ver)/summe_distance;	
+		//calculates ratio of distance in x and y
+		summe_distance = System.Math.Abs(distance_hor) + System.Math.Abs(distance_ver);
+		distance_verhaeltnis_x = System.Math.Abs(distance_hor)/summe_distance;
+		distance_verhaeltnis_y = System.Math.Abs(distance_ver)/summe_distance;	
 
-	//moves mob into player direction based on its speed
-	if(distance_hor < 0f){
-		mobObj.transform.Translate(-1 * speed * distance_verhaeltnis_x, 0, 0);	
-	}
-	if(distance_hor > 0f){
-		mobObj.transform.Translate(speed * distance_verhaeltnis_x, 0, 0);
-	}
-	if(distance_ver < 0f){
-		mobObj.transform.Translate(0, -1 * speed * distance_verhaeltnis_y, 0);	
-	}
-	if(distance_ver > 0f){
-		mobObj.transform.Translate(0, speed * distance_verhaeltnis_y, 0);
-	}
+		//moves mob into player direction based on its speed
+	
 
-	//initialized spriteRenderer
-	spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+		if(distance_hor < 0f){
+			mobObj.transform.Translate(-1 * speed * distance_verhaeltnis_x, 0, 0);	
+		}
+		if(distance_hor > 0f){
+			mobObj.transform.Translate(speed * distance_verhaeltnis_x, 0, 0);
+		}
+		if(distance_ver < 0f){
+			mobObj.transform.Translate(0, -1 * speed * distance_verhaeltnis_y, 0);	
+		}
+		if(distance_ver > 0f){
+			mobObj.transform.Translate(0, speed * distance_verhaeltnis_y, 0);
+		}
 
-	//turns mob sprite to player direction 
-	if(distance_hor>0){
-		spriteRenderer.flipX = false;
-		facing_dir = "right";
-	}else if(distance_hor<0){
-		spriteRenderer.flipX = true;
-		facing_dir = "left";
-	}
+		//initialized spriteRenderer
+		spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-	//checks if player is in range for an attack to the left
-	if(facing_dir == "left" && summe_distance <= range){
-		weaponBehaviourMobs.AttackLeft();
-	}
-	//checks if player is in range for an attack to the left
-	if(facing_dir == "right" && summe_distance <= range){
-		weaponBehaviourMobs.AttackRight();
-	}
+		//turns mob sprite to player direction 
+		if(distance_hor>0){
+			spriteRenderer.flipX = false;
+			facing_dir = "right";
+		}else if(distance_hor<0){
+			spriteRenderer.flipX = true;
+			facing_dir = "left";
+		}
+
+		//checks if player is in range for an attack to the left
+		if(facing_dir == "left" && summe_distance <= range){
+			weaponBehaviourMobs.AttackLeft();
+		}
+		//checks if player is in range for an attack to the left
+		if(facing_dir == "right" && summe_distance <= range){
+			weaponBehaviourMobs.AttackRight();
+		}
+	}	
+	
     }
+	//checks if enemy is on the same screen
+	public void OnBecameVisible(){
+		in_cam = true;
+	}
+	public void OnBecameInvisible(){
+		in_cam = false;
+	}
 }

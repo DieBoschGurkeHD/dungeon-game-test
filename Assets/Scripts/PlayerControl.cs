@@ -38,6 +38,8 @@ public class PlayerControl : MonoBehaviour
 
 	public CameraMover cameraMover;
 
+	private GameObject mobParentObj;
+
     private void Start()
     {
     	//initializes collision
@@ -98,12 +100,18 @@ public class PlayerControl : MonoBehaviour
 		weaponBehaviour.AttackRight();
 	}
 
-	//gets current location of player
+	//gets current location of player - was das? needed?
 	playerObj = GameObject.Find("player_0");
 	player_pos_x = playerObj.transform.position.x;
 	player_pos_y = playerObj.transform.position.y;
-    }
 
+	//checks if room has been defeated
+	mobParentObj = GameObject.Find("MobParent");
+	if(mobParentObj.transform.childCount == 0 && cameraMover.doors_locked == true){
+		cameraMover.RoomCleared();
+	}
+    }
+	//places bomb at player_pos
 	public void PlaceBomb(){
 		if(bomb_counter<=0){
 			return;

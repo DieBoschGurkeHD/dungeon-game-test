@@ -106,7 +106,7 @@ public class PlayerControl : MonoBehaviour
 	player_pos_y = playerObj.transform.position.y;
 
 	//checks if room has been defeated
-	mobParentObj = GameObject.Find("MobParent");
+	mobParentObj = GameObject.Find("MobHolder");
 	if(mobParentObj.transform.childCount == 0 && cameraMover.doors_locked == true){
 		cameraMover.RoomCleared();
 	}

@@ -19,9 +19,25 @@ public class CameraMover : MonoBehaviour
     public bool doors_locked = false;
 
     public GameObject mobSpawnPrefab;
+    public GameObject torchPrefab;
+    public GameObject pillarPrefab;
+    public GameObject skullPrefab;
+    public GameObject cratePrefab;
+    public GameObject crate_doublePrefab;
 
     private GameObject mobParentObj;
-    public int spawn_amount = 3;
+    private GameObject torchParentObj;
+    private GameObject pillarParentObj;
+    private GameObject skullParentObj;
+    private GameObject crateParentObj;
+    private int spawn_amount = 3;
+    private int torch_amount = 5;
+    private int pillar_amount = 5;
+    private int skull_amount = 5;
+    private int crate_amount = 5;
+
+    public Sprite skull_0;
+    public Sprite skull_1;
 
     private int room_progress = 0;
 
@@ -75,7 +91,7 @@ public class CameraMover : MonoBehaviour
             //spawns mob at random pos
             float random_x_pos = Random.Range(-1.5f, 1.5f);
             GameObject MobInstance = Instantiate(mobSpawnPrefab, new Vector3 (random_x_pos,camera_pos,0), Quaternion.identity);
-            mobParentObj = GameObject.Find("MobParent");
+            mobParentObj = GameObject.Find("MobHolder");
             MobInstance.transform.parent=mobParentObj.transform;
 
             //randomly changes skin
@@ -106,6 +122,65 @@ public class CameraMover : MonoBehaviour
                 animatorWeapon.runtimeAnimatorController = Resources.Load("Animations/AnimationStates/WeaponAnimation") as RuntimeAnimatorController;
                 weaponBehaviourMobs.radius = 0.20f;
 			    weaponBehaviourMobs.weapon_strength = 20;
+            }
+        }
+        //maybe func einbauen die proximity zur nächsten torch checkt?
+        for (int i = 0; i != torch_amount; i++) {
+            //spawns torch at random pos
+            float random_x_pos = Random.Range(-1.5f, 1.5f);
+            float random_y_pos = Random.Range(-1.0f,1.0f);
+            GameObject TorchInstance = Instantiate(torchPrefab, new Vector3 (random_x_pos,camera_pos+random_y_pos,0), Quaternion.identity);
+            torchParentObj = GameObject.Find("TorchHolder");
+            TorchInstance.transform.parent=torchParentObj.transform;
+        }
+        for (int i = 0; i != pillar_amount; i++) {
+            //spawns pillar at random pos
+            float random_x_pos = Random.Range(-1.5f, 1.5f);
+            float random_y_pos = Random.Range(-1.0f,1.0f);
+            GameObject PillarInstance = Instantiate(pillarPrefab, new Vector3 (random_x_pos,camera_pos+random_y_pos,0), Quaternion.identity);
+            pillarParentObj = GameObject.Find("PillarHolder");
+            PillarInstance.transform.parent=pillarParentObj.transform;
+        }
+        for (int i = 0; i != skull_amount; i++) {
+            //spawns skulls at random pos
+            float random_x_pos = Random.Range(-1.5f, 1.5f);
+            float random_y_pos = Random.Range(-1.0f,1.0f);
+            GameObject SkullInstance = Instantiate(skullPrefab, new Vector3 (random_x_pos,camera_pos+random_y_pos,0), Quaternion.identity);
+            skullParentObj = GameObject.Find("SkullHolder");
+            SkullInstance.transform.parent=skullParentObj.transform;
+            System.Random ran = new System.Random();
+            int random = ran.Next(0, 2);
+            SpriteRenderer skullSpriteRenderer = SkullInstance.GetComponent<SpriteRenderer>();
+            //chooses random skull sprite
+            if(random == 0){
+                skullSpriteRenderer.sprite = skull_0;    
+            }
+            if(random == 1){
+                skullSpriteRenderer.sprite = skull_1;    
+            }
+            random = ran.Next(0, 2);
+            //chooses random flip x
+            if(random == 0){
+                skullSpriteRenderer.flipX = true;    
+            }
+            if(random == 1){
+                skullSpriteRenderer.flipX = false;    
+            }
+        }
+        for (int i = 0; i != crate_amount; i++) {
+            //spawns crate at random pos
+            float random_x_pos = Random.Range(-1.5f, 1.5f);
+            float random_y_pos = Random.Range(-1.0f,1.0f);
+            System.Random ran = new System.Random();
+            int random = ran.Next(0, 2);
+            crateParentObj = GameObject.Find("CrateHolder");
+            if(random == 0){
+                GameObject CrateInstance = Instantiate(cratePrefab, new Vector3 (random_x_pos,camera_pos+random_y_pos,0), Quaternion.identity);
+                CrateInstance.transform.parent=crateParentObj.transform;
+            }
+            if(random == 1){
+                GameObject CrateInstance = Instantiate(crate_doublePrefab, new Vector3 (random_x_pos,camera_pos+random_y_pos,0), Quaternion.identity);
+                CrateInstance.transform.parent=crateParentObj.transform;
             }
         }
         
